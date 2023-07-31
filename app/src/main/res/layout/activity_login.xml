@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorbackground"
+    android:orientation="vertical"
+    tools:context=".ui.activity.LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="64dp"
+        android:text="Chào mừng trở lại!"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="11dp"
+        android:text="Nhập email và tên của bạn để chat"
+        android:textColor="@color/grey_active" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/background_editext"
+        android:drawableLeft="@drawable/icon___email"
+        android:drawablePadding="10dp"
+        android:hint="Email"
+        android:imeOptions="actionSearch"
+        android:paddingVertical="19dp"
+        android:paddingLeft="24dp"
+        android:textColor="@color/black"
+        android:textColorHint="#858585"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/background_editext"
+        android:drawableLeft="@drawable/baseline_person_outline_24"
+        android:drawablePadding="10dp"
+        android:hint="name"
+        android:paddingVertical="19dp"
+        android:paddingLeft="24dp"
+        android:textColor="@color/black"
+        android:textColorHint="#858585"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="30dp"
+        android:gravity="right"
+        android:text="Quên mật khẩu?"
+        android:textColor="@color/black"
+        android:textSize="14dp" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_below="@+id/btnStart"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_ui"
+        android:text="Đăng nhập"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:backgroundTint="@null" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnEnd"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copyright © "
+            android:textColor="@color/grey_active" />
+
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Madlife"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</LinearLayout>
