@@ -1,27 +1,29 @@
 package com.example.exelab7chat;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.os.Bundle;
-import android.view.View;
-
+import com.example.exelab7chat.constants.AppConstant;
 import com.example.exelab7chat.databinding.ActivityMainBinding;
 import com.example.exelab7chat.model.User;
-import com.example.exelab7chat.viewmodel.LoginViewModel;
+import com.example.exelab7chat.model.UserClient;
+import com.example.exelab7chat.ui.activity.ChatActivity;
+import com.example.exelab7chat.ui.adapter.HostAdapter;
 import com.example.exelab7chat.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HostAdapter.EventClick {
     private ActivityMainBinding binding;
     private List<User> mListHost;
     private MainViewModel mainViewModel;
     private HostAdapter hostAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +34,18 @@ public class MainActivity extends AppCompatActivity {
         hostAdapter = new HostAdapter();
         binding.rcvListHost.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
-        mainViewModel.getHost().observe(this, it -> {
-            hostAdapter.setListHost(mListHost);
+        mainViewModel.getHost(UserClient.getInstance().get_id()).observe(this, it -> {
+            hostAdapter.setListHost(it);
             hostAdapter.setEventClick(this);
             binding.rcvListHost.setAdapter(hostAdapter);
         });
+    }
+
+    @Override
+    public void onClick(User user) {
+        Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+        intent.putExtra(AppConstant.ID_USER, user.get_id());
+        intent.putExtra(AppConstant.NAME_USER, user.getName());
+        startActivity(intent);
     }
 }

@@ -25,7 +25,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-
+        binding.name.setText("minhdinh");
+        binding.email.setText("dinhthanhminhk11@gmail.com");
         binding.btnLogin.setOnClickListener(v -> {
             loginViewModel.loginAndRegister(new User(binding.name.getText().toString(), binding.email.getText().toString())).observe(this, it -> {
                 UserClient userClient = UserClient.getInstance();

@@ -1,7 +1,9 @@
 package com.example.exelab7chat.constants;
 
 public interface AppConstant {
-    String BASE = "http://192.168.242.1:8080"; // domain chính
+    String BASE = "http://192.168.28.184:8080"; // domain chính
     String BASE_URL = BASE + "/api/";
-    public static final String BASE_URL_CHAT = BASE;
+    String ID_USER = "ID_USER";
+    String NAME_USER = "NAME_USER";
+    String CALL_ERROR = "CALL_ERROR";
 }

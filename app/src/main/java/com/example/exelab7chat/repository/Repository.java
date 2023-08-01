@@ -5,7 +5,11 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.exelab7chat.api.ApiRequest;
+import com.example.exelab7chat.constants.AppConstant;
 import com.example.exelab7chat.model.Content;
+import com.example.exelab7chat.model.ContentChat;
+import com.example.exelab7chat.model.DataChat;
+import com.example.exelab7chat.model.MessageChat;
 import com.example.exelab7chat.model.User;
 import com.example.exelab7chat.retrofit.RetrofitRequest;
 
@@ -42,9 +46,9 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<List<User>> getHost() {
+    public MutableLiveData<List<User>> getHost(String id) {
         final MutableLiveData<List<User>> user = new MutableLiveData<>();
-        apiRequest.getListUser().enqueue(new Callback<List<User>>() {
+        apiRequest.getListUser(id).enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response.isSuccessful()) {
@@ -60,5 +64,34 @@ public class Repository {
         return user;
     }
 
+    public void insertMessage(MessageChat message) {
+        apiRequest.addMessage(message).enqueue(new Callback<MessageChat>() {
+            @Override
+            public void onResponse(Call<MessageChat> call, Response<MessageChat> response) {
+                Log.e(AppConstant.CALL_ERROR, "da gui");
+            }
+
+            @Override
+            public void onFailure(Call<MessageChat> call, Throwable t) {
+                Log.e(AppConstant.CALL_ERROR, t.getMessage());
+            }
+        });
+    }
+
+    public MutableLiveData<List<ContentChat>> getContentChat(String sendId, String sendToId) {
+        final MutableLiveData<List<ContentChat>> data = new MutableLiveData<>();
+        apiRequest.getDataChat(sendId, sendToId).enqueue(new Callback<DataChat>() {
+            @Override
+            public void onResponse(Call<DataChat> call, Response<DataChat> response) {
+                data.postValue(response.body().getData());
+            }
+
+            @Override
+            public void onFailure(Call<DataChat> call, Throwable t) {
+                Log.e(AppConstant.CALL_ERROR, t.getMessage());
+            }
+        });
+        return data;
+    }
 
 }

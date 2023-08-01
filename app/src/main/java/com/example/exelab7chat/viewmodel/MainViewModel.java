@@ -20,11 +20,9 @@ public class MainViewModel extends AndroidViewModel {
         repository = new Repository();
     }
 
-    public LiveData<List<User>> getHost() {
-        return repository.getHost();
+    public LiveData<List<User>> getHost(String id) {
+        return repository.getHost(id);
     }
 
-    public LiveData<List<Content>> getMsgId(String send) {
-        return repository.getMsgId(send);
-    }
+
 }
